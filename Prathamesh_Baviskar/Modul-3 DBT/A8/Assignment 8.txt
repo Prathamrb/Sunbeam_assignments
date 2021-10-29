@@ -1,0 +1,97 @@
+			Database Technologies – Assignment 8
+*Use sub-query to solve following problems.
+
+Q1. Display the first name and salary for all employees who earn more than employee number 103 (Employees table).
+Ans: -
+D4_56327>select first_name, salary from employees 
+where salary > (select salary from employees 
+where employee_id = 103);
++------------+----------+
+| first_name | salary   |
++------------+----------+
+| Steven     | 24000.00 |
+| Neena      | 17000.00 |
+| Lex        | 17000.00 |
+| Nancy      | 12000.00 |
+| Den        | 11000.00 |
+| Michael    | 13000.00 |
+| Hermann    | 10000.00 |
+| Shelley    | 12000.00 |
++------------+----------+
+23 rows in set (0.09 sec)
+
+Q2. Display the department number and department name for all departments whose location number is equal to the location number of department number 90 (Departments table).
+Ans: -
+D4_56327>select department_id, department_name from departments
+where location_id = (select location_id from departments 
+where department_id = 90);
++---------------+----------------------+
+| department_id | department_name      |
++---------------+----------------------+
+|            10 | Administration       |
+|            30 | Purchasing           |
+|            90 | Executive            |
+|           100 | Finance              |
+|           110 | Accounting           |
+|           120 | Treasury             |
+|           130 | Corporate Tax        |
+|           250 | Retail Sales         |
+|           260 | Recruiting           |
+|           270 | Payroll              |
++---------------+----------------------+
+21 rows in set (0.15 sec)
+
+Q3. Display the last name and hire date for all employees who was hired after employee number 101 (Employees table).
+Ans: -
+D4_56327>select last_name, hire_date from employees 
+where hire_date > (select hire_date from employees 
+where employee_id = 103);
++-------------+------------+
+| last_name   | hire_date  |
++-------------+------------+
+| Ernst       | 1987-06-21 |
+| Austin      | 1987-06-22 |
+| Pataballa   | 1987-06-23 |
+| Lorentz     | 1987-06-24 |
+| Greenberg   | 1987-06-25 |
+| Geoni       | 1987-09-08 |
+| Sarchand    | 1987-09-09 |
+| Fay         | 1987-09-27 |
+| Mavris      | 1987-09-28 |
+| Baer        | 1987-09-29 |
+| Higgins     | 1987-09-30 |
+| Gietz       | 1987-10-01 |
++-------------+------------+
+103 rows in set (0.10 sec)
+
+Q4. Finds the employees who have the highest salary
+Ans: -
+D4_56327>select employee_id, concat(first_name,' ',last_name) Name,
+salary from employees 
+where salary =  (select max(salary) from employees);
++-------------+-------------+----------+
+| employee_id | Name        | salary   |
++-------------+-------------+----------+
+|         100 | Steven King | 24000.00 |
++-------------+-------------+----------+
+1 row in set (0.07 sec)
+
+Q5. Find all employees who salaries are greater than the average salary of all employees
+Ans: -
+D4_56327>select employee_id, concat(first_name,' ',last_name) Name,
+round(salary,0) from employees 
+where salary > (select round(avg(salary),2) from employees);
++-------------+-------------------+-----------------+
+| employee_id | Name              | round(salary,0) |
++-------------+-------------------+-----------------+
+|         100 | Steven King       |           24000 |
+|         101 | Neena Kochhar     |           17000 |
+|         102 | Lex De Haan       |           17000 |
+|         103 | Alexander Hunold  |            9000 |
+|         108 | Nancy Greenberg   |           12000 |
+|         203 | Susan Mavris      |            6500 |
+|         204 | Hermann Baer      |           10000 |
+|         205 | Shelley Higgins   |           12000 |
+|         206 | William Gietz     |            8300 |
++-------------+-------------------+-----------------+
+51 rows in set (0.00 sec)

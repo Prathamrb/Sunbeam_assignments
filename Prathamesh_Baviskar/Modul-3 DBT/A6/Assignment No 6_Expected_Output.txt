@@ -1,0 +1,427 @@
+Note:To solve below queries use “sales” database
+*Use appropriate joinsto solve following queries.
+1. Write a query that lists each order number followed by the name of the customer who made the order.
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3005 | Liu      |
+| 3006 | Cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+10 rows in set (0.00 sec)
+
+
+
+2. Write a query that gives the names of both thesalesperson and the customer for each order along with the order number.
++------+----------+---------+
+| onum | cname    | sname   |
++------+----------+---------+
+| 3001 | Cisneros | Rifkin  |
+| 3003 | Hoffman  | Peel    |
+| 3002 | Pereira  | Motika  |
+| 3005 | Liu      | Serres  |
+| 3006 | Cisneros | Rifkin  |
+| 3009 | Giovanni | Axelrod |
+| 3007 | Grass    | Serres  |
+| 3008 | Clemens  | Peel    |
+| 3010 | Grass    | Serres  |
+| 3011 | Clemens  | Peel    |
++------+----------+---------+
+10 rows in set (0.00 sec)
+
+
+3. Write a query that produces all customers serviced by salespeople with a commission above 12%. Output the customer’s name, the salesperson’s name, and the salesperson’s rate of commission.
++----------+--------+------+
+| cname    | sname  | comm |
++----------+--------+------+
+| Liu      | Serres | 0.13 |
+| Grass    | Serres | 0.13 |
+| Cisneros | Rifkin | 0.15 |
++----------+--------+------+
+3 rows in set (0.00 sec)
+
+4. Write a query that calculates the amount of the salesperson’s commission on each order by a customer with a rating above 100.
++------+---------+---------+------+------------+
+| onum | amt     | sname   | snum | commission |
++------+---------+---------+------+------------+
+| 3001 |   18.69 | Rifkin  | 1007 |     2.8035 |
+| 3005 | 5160.45 | Serres  | 1002 |   670.8585 |
+| 3006 | 1098.16 | Rifkin  | 1007 |   164.7240 |
+| 3009 | 1713.23 | Axelrod | 1003 |   171.3230 |
+| 3007 |   75.75 | Serres  | 1002 |     9.8475 |
+| 3010 |  309.95 | Serres  | 1002 |    40.2935 |
++------+---------+---------+------+------------+
+6 rows in set (0.00 sec)
+
+
+5. Write a query that produces all pairs of salespeople who are living in the same city.Exclude combinations of salespeople with themselves as well as duplicate rows with the order reversed.
++----------------------------------------+
+| concat(sa.sname,concat(', ',sb.sname)) |
++----------------------------------------+
+| Motika, Peel                           |
++----------------------------------------+
+1 row in set (0.00 sec)
+ 
+*************************************************************************************************************************************************************
+
+Note: To solve below queries use “hr” database
+*Use appropriate joins to solve following queries.
+6. Display department name and manager first name.
++------------+------------------+
+| first_name | department_name  |
++------------+------------------+
+| Jennifer   | Administration   |
+| Michael    | Marketing        |
+| Den        | Purchasing       |
+| Susan      | Human Resources  |
+| Adam       | Shipping         |
+| Alexander  | IT               |
+| Hermann    | Public Relations |
+| John       | Sales            |
+| Steven     | Executive        |
+| Nancy      | Finance          |
+| Shelley    | Accounting       |
++------------+------------------+
+11 rows in set (0.00 sec)
+
+7. Display department name, manager name, and city.
++------------------+------------+---------------------+
+| department_name  | first_name | city                |
++------------------+------------+---------------------+
+| Administration   | Jennifer   | Seattle             |
+| Marketing        | Michael    | Toronto             |
+| Purchasing       | Den        | Seattle             |
+| Human Resources  | Susan      | London              |
+| Shipping         | Adam       | South San Francisco |
+| IT               | Alexander  | Southlake           |
+| Public Relations | Hermann    | Munich              |
+| Sales            | John       | OX9 9ZB             |
+| Executive        | Steven     | Seattle             |
+| Finance          | Nancy      | Seattle             |
+| Accounting       | Shelley    | Seattle             |
++------------------+------------+---------------------+
+11 rows in set (0.00 sec)
+
+8. Display country name, city, and department name.
++--------------------------+---------------------+----------------------+
+| country_name             | city                | department_name      |
++--------------------------+---------------------+----------------------+
+| United States of America | Seattle             | Administration       |
+| Canada                   | Toronto             | Marketing            |
+| United States of America | Seattle             | Purchasing           |
+| United Kingdom           | London              | Human Resources      |
+| United States of America | South San Francisco | Shipping             |
+| United States of America | Southlake           | IT                   |
+| Germany                  | Munich              | Public Relations     |
+| United States of America | Seattle             | Executive            |
+| United States of America | Seattle             | Finance              |
+| United States of America | Seattle             | Accounting           |
+| United States of America | Seattle             | Treasury             |
+| United States of America | Seattle             | Corporate Tax        |
+| United States of America | Seattle             | Control And Credit   |
+| United States of America | Seattle             | Shareholder Services |
+| United States of America | Seattle             | Benefits             |
+| United States of America | Seattle             | Manufacturing        |
+| United States of America | Seattle             | Construction         |
+| United States of America | Seattle             | Contracting          |
+| United States of America | Seattle             | Operations           |
+| United States of America | Seattle             | IT Support           |
+| United States of America | Seattle             | NOC                  |
+| United States of America | Seattle             | IT Helpdesk          |
+| United States of America | Seattle             | Government Sales     |
+| United States of America | Seattle             | Retail Sales         |
+| United States of America | Seattle             | Recruiting           |
+| United States of America | Seattle             | Payroll              |
++--------------------------+---------------------+----------------------+
+26 rows in set (0.00 sec)
+
+
+9.Display job title, department name, employee last name, starting date for all jobs from 1993 to 1998.
++--------------------------+-----------------+-----------+------------+
+| job_title                | department_name | last_name | start_date |
++--------------------------+-----------------+-----------+------------+
+| Programmer               | IT              | De Haan   | 1993-01-13 |
+| Accounting Manager       | Accounting      | Kochhar   | 1993-10-28 |
+| Marketing Representative | Marketing       | Hartstein | 1996-02-17 |
+| Stock Clerk              | Shipping        | Raphaely  | 1998-03-24 |
+| Sales Representative     | Sales           | Taylor    | 1998-03-24 |
+| Public Accountant        | Executive       | Whalen    | 1994-07-01 |
++--------------------------+-----------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+10. Display job title and average salary of employees.
++---------------------------------+---------------+
+| job_title                       | avg(e.salary) |
++---------------------------------+---------------+
+| President                       |  24000.000000 |
+| Administration Vice President   |  17000.000000 |
+| Administration Assistant        |   4400.000000 |
+| Finance Manager                 |  12000.000000 |
+| Accountant                      |   7920.000000 |
+| Accounting Manager              |  12000.000000 |
+| Public Accountant               |   8300.000000 |
+| Sales Manager                   |  12200.000000 |
+| Sales Representative            |   8350.000000 |
+| Purchasing Manager              |  11000.000000 |
+| Purchasing Clerk                |   2780.000000 |
+| Stock Manager                   |   7280.000000 |
+| Stock Clerk                     |   2785.000000 |
+| Shipping Clerk                  |   3215.000000 |
+| Programmer                      |   5760.000000 |
+| Marketing Manager               |  13000.000000 |
+| Marketing Representative        |   6000.000000 |
+| Human Resources Representative  |   6500.000000 |
+| Public Relations Representative |  10000.000000 |
++---------------------------------+---------------+
+19 rows in set (0.00 sec)
+
+11. Display job title, employee name, and the difference between maximum salary for the job and salary of the employee.
++---------------------------------+-------------+-----------------------+
+| job_title                       | first_name  | j.max_salary-e.salary |
++---------------------------------+-------------+-----------------------+
+| President                       | Steven      |              16000.00 |
+| Administration Vice President   | Neena       |              13000.00 |
+| Administration Vice President   | Lex         |              13000.00 |
+| Programmer                      | Alexander   |               1000.00 |
+| Programmer                      | Bruce       |               4000.00 |
+| Programmer                      | David       |               5200.00 |
+| Programmer                      | Valli       |               5200.00 |
+| Programmer                      | Diana       |               5800.00 |
+| Finance Manager                 | Nancy       |               4000.00 |
+| Accountant                      | Daniel      |                  0.00 |
+| Accountant                      | John        |                800.00 |
+| Accountant                      | Ismael      |               1300.00 |
+| Accountant                      | Jose Manuel |               1200.00 |
+| Accountant                      | Luis        |               2100.00 |
+| Purchasing Manager              | Den         |               4000.00 |
+| Purchasing Clerk                | Alexander   |               2400.00 |
+| Purchasing Clerk                | Shelli      |               2600.00 |
+| Purchasing Clerk                | Sigal       |               2700.00 |
+| Purchasing Clerk                | Guy         |               2900.00 |
+| Purchasing Clerk                | Karen       |               3000.00 |
+| Stock Manager                   | Matthew     |                500.00 |
+| Stock Manager                   | Adam        |                300.00 |
+| Stock Manager                   | Payam       |                600.00 |
+| Stock Manager                   | Shanta      |               2000.00 |
+| Stock Manager                   | Kevin       |               2700.00 |
+| Stock Clerk                     | Julia       |               1800.00 |
+| Stock Clerk                     | Irene       |               2300.00 |
+| Stock Clerk                     | James       |               2600.00 |
+| Stock Clerk                     | Steven      |               2800.00 |
+| Stock Clerk                     | Laura       |               1700.00 |
+| Stock Clerk                     | Mozhe       |               2200.00 |
+| Stock Clerk                     | James       |               2500.00 |
+| Stock Clerk                     | TJ          |               2900.00 |
+| Stock Clerk                     | Jason       |               1700.00 |
+| Stock Clerk                     | Michael     |               2100.00 |
+| Stock Clerk                     | Ki          |               2600.00 |
+| Stock Clerk                     | Hazel       |               2800.00 |
+| Stock Clerk                     | Renske      |               1400.00 |
+| Stock Clerk                     | Stephen     |               1800.00 |
+| Stock Clerk                     | John        |               2300.00 |
+| Stock Clerk                     | Joshua      |               2500.00 |
+| Stock Clerk                     | Trenna      |               1500.00 |
+| Stock Clerk                     | Curtis      |               1900.00 |
+| Stock Clerk                     | Randall     |               2400.00 |
+| Stock Clerk                     | Peter       |               2500.00 |
+| Sales Manager                   | John        |               6000.00 |
+| Sales Manager                   | Karen       |               6500.00 |
+| Sales Manager                   | Alberto     |               8000.00 |
+| Sales Manager                   | Gerald      |               9000.00 |
+| Sales Manager                   | Eleni       |               9500.00 |
+| Sales Representative            | Peter       |               2000.00 |
+| Sales Representative            | David       |               2500.00 |
+| Sales Representative            | Peter       |               3000.00 |
+| Sales Representative            | Christopher |               4000.00 |
+| Sales Representative            | Nanette     |               4500.00 |
+| Sales Representative            | Oliver      |               5000.00 |
+| Sales Representative            | Janette     |               2000.00 |
+| Sales Representative            | Patrick     |               2500.00 |
+| Sales Representative            | Allan       |               3000.00 |
+| Sales Representative            | Lindsey     |               4000.00 |
+| Sales Representative            | Louise      |               4500.00 |
+| Sales Representative            | Sarath      |               5000.00 |
+| Sales Representative            | Clara       |               1500.00 |
+| Sales Representative            | Danielle    |               2500.00 |
+| Sales Representative            | Mattea      |               4800.00 |
+| Sales Representative            | David       |               5200.00 |
+| Sales Representative            | Sundar      |               5600.00 |
+| Sales Representative            | Amit        |               5800.00 |
+| Sales Representative            | Lisa        |                500.00 |
+| Sales Representative            | Harrison    |               2000.00 |
+| Sales Representative            | Tayler      |               2400.00 |
+| Sales Representative            | William     |               4600.00 |
+| Sales Representative            | Elizabeth   |               4700.00 |
+| Sales Representative            | Sundita     |               5900.00 |
+| Sales Representative            | Ellen       |               1000.00 |
+| Sales Representative            | Alyssa      |               3200.00 |
+| Sales Representative            | Jonathon    |               3400.00 |
+| Sales Representative            | Jack        |               3600.00 |
+| Sales Representative            | Kimberely   |               5000.00 |
+| Sales Representative            | Charles     |               5800.00 |
+| Shipping Clerk                  | Winston     |               2300.00 |
+| Shipping Clerk                  | Jean        |               2400.00 |
+| Shipping Clerk                  | Martha      |               3000.00 |
+| Shipping Clerk                  | Girard      |               2700.00 |
+| Shipping Clerk                  | Nandita     |               1300.00 |
+| Shipping Clerk                  | Alexis      |               1400.00 |
+| Shipping Clerk                  | Julia       |               2100.00 |
+| Shipping Clerk                  | Anthony     |               2500.00 |
+| Shipping Clerk                  | Kelly       |               1700.00 |
+| Shipping Clerk                  | Jennifer    |               1900.00 |
+| Shipping Clerk                  | Timothy     |               2600.00 |
+| Shipping Clerk                  | Randall     |               3000.00 |
+| Shipping Clerk                  | Sarah       |               1500.00 |
+| Shipping Clerk                  | Britney     |               1600.00 |
+| Shipping Clerk                  | Samuel      |               2300.00 |
+| Shipping Clerk                  | Vance       |               2700.00 |
+| Shipping Clerk                  | Alana       |               2400.00 |
+| Shipping Clerk                  | Kevin       |               2500.00 |
+| Shipping Clerk                  | Donald      |               2900.00 |
+| Shipping Clerk                  | Douglas     |               2900.00 |
+| Administration Assistant        | Jennifer    |               1600.00 |
+| Marketing Manager               | Michael     |               2000.00 |
+| Marketing Representative        | Pat         |               3000.00 |
+| Human Resources Representative  | Susan       |               2500.00 |
+| Public Relations Representative | Hermann     |                500.00 |
+| Accounting Manager              | Shelley     |               4000.00 |
+| Public Accountant               | William     |                700.00 |
++---------------------------------+-------------+-----------------------+
+107 rows in set (0.00 sec)
+
+
+
+12. Display last name, job title of employees who have commission percentage and belongs to department 30.
++--------------------+------------+
+| job_title          | last_name  |
++--------------------+------------+
+| Purchasing Manager | Raphaely   |
+| Purchasing Clerk   | Khoo       |
+| Purchasing Clerk   | Baida      |
+| Purchasing Clerk   | Tobias     |
+| Purchasing Clerk   | Himuro     |
+| Purchasing Clerk   | Colmenares |
++--------------------+------------+
+6 rows in set (0.00 sec)
+
+
+13. Display details of jobs that were done by any employee who is currently drawing more than 15000 of salary.
++-------------+------------+-----------+---------+-------------------------------+------------+------------+
+| employee_id | first_name | last_name | job_id  | job_title                     | min_salary | max_salary |
++-------------+------------+-----------+---------+-------------------------------+------------+------------+
+|         100 | Steven     | King      | AD_PRES | President                     |      20000 |      40000 |
+|         101 | Neena      | Kochhar   | AD_VP   | Administration Vice President |      15000 |      30000 |
+|         102 | Lex        | De Haan   | AD_VP   | Administration Vice President |      15000 |      30000 |
++-------------+------------+-----------+---------+-------------------------------+------------+------------+
+3 rows in set (0.00 sec)
+
+
+14. Display department name, manager name, and salary of the manager for all managers whose experience is more than 5 years.
++-----------------+------------+----------+---------------------+
+| department_name | first_name | salary   | experience in years |
++-----------------+------------+----------+---------------------+
+| NULL            | Lex        | 17000.00 |              5.5288 |
+| Administration  | Jennifer   |  4400.00 |              5.7534 |
++-----------------+------------+----------+---------------------+
+2 rows in set (0.00 sec)
+
+
+15. Display employee name if the employee joined before his manager.
+Empty set (0.00 sec)
+
+
+16. Display employee name, job title for the jobs employee did in the past where the job was done less than six months.
+Empty set (0.00 sec)
+
+17. Display employee name and country in which he is working.
++-------------+--------------------------+
+| first_name  | country_name             |
++-------------+--------------------------+
+| Jennifer    | United States of America |
+| Michael     | Canada                   |
+| Pat         | Canada                   |
+| Den         | United States of America |
+| Alexander   | United States of America |
+| Shelli      | United States of America |
+| Sigal       | United States of America |
+| Guy         | United States of America |
+| Karen       | United States of America |
+| Susan       | United Kingdom           |
+| Matthew     | United States of America |
+| Adam        | United States of America |
+| Payam       | United States of America |
+| Shanta      | United States of America |
+| Kevin       | United States of America |
+| Julia       | United States of America |
+| Irene       | United States of America |
+| James       | United States of America |
+| Steven      | United States of America |
+| Laura       | United States of America |
+| Mozhe       | United States of America |
+| TJ          | United States of America |
+| Jason       | United States of America |
+| Michael     | United States of America |
+| Ki          | United States of America |
+| Hazel       | United States of America |
+| Renske      | United States of America |
+| Stephen     | United States of America |
+| John        | United States of America |
+| Joshua      | United States of America |
+| Trenna      | United States of America |
+| Curtis      | United States of America |
+| Randall     | United States of America |
+| Peter       | United States of America |
+| Winston     | United States of America |
+| Jean        | United States of America |
+| Martha      | United States of America |
+| Girard      | United States of America |
+| Nandita     | United States of America |
+| Alexis      | United States of America |
+| Anthony     | United States of America |
+| Kelly       | United States of America |
+| Timothy     | United States of America |
+| Sarah       | United States of America |
+| Britney     | United States of America |
+| Samuel      | United States of America |
+| Vance       | United States of America |
+| Alana       | United States of America |
+| Donald      | United States of America |
+| Douglas     | United States of America |
+| Bruce       | United States of America |
+| David       | United States of America |
+| Valli       | United States of America |
+| Diana       | United States of America |
+| Hermann     | Germany                  |
+| Neena       | United States of America |
+| Lex         | United States of America |
+| Nancy       | United States of America |
+| Daniel      | United States of America |
+| Ismael      | United States of America |
+| Jose Manuel | United States of America |
+| Luis        | United States of America |
+| Shelley     | United States of America |
+| William     | United States of America |
++-------------+--------------------------+
+64 rows in set (0.00 sec)
+
+18. Display department name, average salary and number of employees with commission within the department.
++-----------------+----------------------+---------------+
+| department_name | count(e.employee_id) | avg(e.salary) |
++-----------------+----------------------+---------------+
+| Sales           |                   34 |   8955.882353 |
++-----------------+----------------------+---------------+
+1 row in set (0.00 sec)
+
+
+19. Display the month in which more than 5 employees joined in any department located in Sydney.
+Empty set (0.01 sec)
+
+20. Display employee name, job title, start date, and end date of past jobs of all employees with commission percentage null.
+Empty set (0.00 sec)
